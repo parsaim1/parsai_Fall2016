@@ -1,0 +1,23 @@
+/**
+ * 
+ */
+
+/**
+ * @author Parsa
+ *Date: 08/30/16 
+ *The code converts a temperature in Fahrenheit into Celsius
+ */
+public class TempConvertCode {
+
+	/**
+	 * @param args
+	 */
+	public static void method1()
+		System.out.println();
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+
+	}
+
+}
