@@ -54,4 +54,64 @@ public class Calculate {
 		int answer = x % y;
 		return answer;
 	}
+	
+	public static double absValue(double x) {
+		if (x >= 0) {
+			double answer = x;
+		} 
+		else {
+			double answer = (-1) * x;
+		}
+		return answer;
+	}
+		
+	public static int max(int x, int y) {
+		if (x >= y) {
+			int answer = x;
+		}
+		else {
+			int answer = y;
+		}
+		return answer;
+	}
+	
+	public static double max(double x, double y, double z) {
+		if (x >= y >= z) {
+			double answer = x;
+		}
+		else {
+			if (x >= z > y) {
+				double answer = x;
+			}
+			else {
+				if (y > x >= z) {
+					double answer = y;
+				}
+				else {
+					if (y >= z > x) {
+						double answer = y;
+					}
+					else {
+						double answer = z;
+					}
+				}
+			}
+		}
+		return answer;
+	}
+	
+	public static int min(int x, int y) {
+		if (x <= y) {
+			int answer = x;
+		}
+		else {
+			int answer = y;
+		}
+		return answer;
+	}
+	
+	public static double round2(double x) {
+		
+	}
+		
 }
