@@ -45,13 +45,8 @@ public class Calculate {
 		return answer;
 	}
 	 
-	public static String foil(int w, int x, int y, int z, String n) {
-		String answer = (w * y) + "n^2 + " + (w * z + x * y) + "n + " + (x * z);
-		return answer;
-	}
-	
-	public static int isDivisibleBy(int x, int y) {
-		int answer = x % y;
+	public static String foil(int w, int x, int y, int z, String "v") {
+		String answer = (w * y) + "n^2 +" + (w * z + x * y) + "n +" + (x * z);
 		return answer;
 	}
 }
