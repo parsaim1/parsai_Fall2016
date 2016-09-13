@@ -76,19 +76,19 @@ public class Calculate {
 	}
 	
 	public static double max(double x, double y, double z) {
-		if (x >= y >= z) {
+		if (x >= y && y >= z) {
 			double answer = x;
 		}
 		else {
-			if (x >= z > y) {
+			if (x >= z && z > y) {
 				double answer = x;
 			}
 			else {
-				if (y > x >= z) {
+				if (y > x && x >= z) {
 					double answer = y;
 				}
 				else {
-					if (y >= z > x) {
+					if (y >= z && z > x) {
 						double answer = y;
 					}
 					else {
@@ -111,6 +111,18 @@ public class Calculate {
 	}
 	
 	public static double round2(double x) {
+		double start = (x * 100) + .5;
+		int start2 = (int) start;
+		double answer = start2 / 100.0
+		return answer;
+	}
+	
+	public static double exponent(double base, int exp) {
+		if (exp = 0) {
+			for (int i = 1; i <= exp; i++)
+		}
+		
+	
 		
 	}
 		
