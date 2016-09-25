@@ -18,6 +18,6 @@ public class TempConvertCode {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println(TempConvertCode.toCelsius(32));
+		System.out.println(TempConvertCode.toCelsius(0));
 	}
 }
