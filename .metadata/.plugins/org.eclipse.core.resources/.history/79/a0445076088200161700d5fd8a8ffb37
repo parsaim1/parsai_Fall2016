@@ -1,7 +1,0 @@
-
-public class Calculate {
-	public static int square(int number) {
-		int answer = number * number;
-		return answer;
-	}
-}

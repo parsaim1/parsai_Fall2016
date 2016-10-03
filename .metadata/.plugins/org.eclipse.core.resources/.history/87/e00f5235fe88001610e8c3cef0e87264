@@ -1,0 +1,35 @@
+import java.util.*; 
+
+public class ProcessingNumbers {
+	public static void main(String[] args) {
+		Scanner console = new Scanner(System.in);
+		System.out.println("How many numbers do you want to use?");
+		int nums = console.nextInt(); 
+		System.out.println("What is the first even number you want to use?");
+		int first = console.nextInt();
+		int max = first;
+		int min = first;
+		int largestEven = first;
+		int total = first;
+		System.out.println("What are the remaining numbers (do not include commas)");
+		int nextNum = console.nextInt();
+		for (int terms = 0; terms < (nums - 1); terms++) {
+			if (nextNum > max) {
+				max = nextNum;
+			} 
+			if (nextNum < min) {
+				min = nextNum;
+			} 
+			if (nextNum % 2 == 0) {
+				total += nextNum;
+				if (nextNum > largestEven) {
+					largestEven = nextNum;	
+				}
+			}
+		}
+		System.out.println("The smallest number is " + min);
+		System.out.println("The largest number is " + max);
+		System.out.println("The sum of even numbers is " + total);
+		System.out.println("The largest even number is " + largestEven); 
+	}
+}
