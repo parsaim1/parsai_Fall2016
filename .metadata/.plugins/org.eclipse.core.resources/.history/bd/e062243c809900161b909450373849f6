@@ -30,7 +30,7 @@ public class Split
 		*/
 
 		//System.out.println(Arrays.toString("I really like really red apples".split("really")));
-		sandwich("apples pineapples bread lettus tomato bacon mayo ham bread cheese", "bread");
+		sandwich("I reallyreally like apples", "really");
 
 	}
 	public static void sandwich(String str, String keyWord) {
