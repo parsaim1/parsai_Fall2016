@@ -1,0 +1,98 @@
+/* Author: Parsa Iranmahboub
+ * Date: 10/28/16
+ * The purpose of this code is to determine whether the user inputed a proper sandwich, and if so, to return the ingredients inside the sandwich.
+ */
+import java.util.*;
+public class Split 
+{
+
+	public static void main(String[] args) 
+	{
+		//String.split();
+		//It's a method that acts on a string, <StringName>.split(<String sp>);
+		//Where sp is the string where the string splits
+		//And it returns an array
+		// Example: "I like apples!".split(" "); 
+		//		it will split at spaces and return an array of ["I","like","apples!"]
+		// Example 2: "I really like really red apples"split("really")
+		//		it will split at the word "really" and return an array of ["I "," like "," apples!"]
+		
+		//play around with String.split! what happens if you "I reallyreally like apples".split("really") ?
+		
+		
+		//Your task:
+		/*Write a method that take in a string like "applespineapplesbreadlettustomatobaconmayohambreadcheese" describing a sandwich
+		 * use String.split to split up the sandwich by the word "bread" and return what's in the middle of the sandwich and ignores what's on the outside
+		 * What if it's a fancy sandwich with multiple pieces of bread?
+		*/
+		
+		
+		//Your task pt 2:
+		/*Write a method that take in a string like "apples pineapples bread lettus tomato bacon mayo ham bread cheese" describing a sandwich
+		 * use String.split to split up the sandwich at the spaces, " ", and return what's in the middle of the sandwich and ignores what's on the outside
+		 * Again, what if it's a fancy sandwich with multiple pieces of bread?
+		*/
+
+		//System.out.println(Arrays.toString("I really like really red apples".split("really")));
+		
+		sandwich("breadlettusbreadtomatobreadbaconmayohambread"); //calls the method that actually finds the ingredients in the sandwich
+
+	}
+	public static void sandwich(String str) {
+		if (str.toLowerCase().indexOf("bread") == -1) { //test to see if bread even exists.
+			System.out.println("You need bread to make a sandwich");
+		} 
+		if (str.toLowerCase().indexOf("bread", str.length()-6) != str.length() - 5 || str.toLowerCase().indexOf("bread", 0) != 0) { //tests to makes sure the sandwich begins and ends with bread
+			System.out.println("In order to have a complete sandwich, you need to have a piece of bread at both ends of the sandwich.");
+		} else {
+			String afterOuterBread = str.substring(5, str.length() - 5);
+			String[] afterSpaces = afterOuterBread.split(" ");
+			String listOfIngredients = ""; 
+			for (String ingredient : afterSpaces) {
+				listOfIngredients = listOfIngredients + ingredient; 
+			}
+			String[] afterInnerBread = listOfIngredients.split("bread");
+			int numbOfBread = 1;
+			for (String filling : afterInnerBread) {
+				System.out.println("The ingredients between bread slices " + numbOfBread + " and " + (numbOfBread +1) + " are " + filling);
+				numbOfBread++;
+			}
+		}
+	}
+}
+			
+	/*		String removingBrackets = Arrays.toString(afterSpaces);
+			String removingBrackets2 = removingBrackets.substring(1, removingBrackets.length() - 1);
+			String [] afterInnerBread = removingBrackets2.split(keyWord);
+			int numbOfBread = 1;
+			for (String filling : afterInnerBread) {
+				System.out.println("The ingredients between bread slices " + numbOfBread + " and " + (numbOfBread +1) + " are " + filling);
+				numbOfBread++;
+			}
+		}
+	}
+} */
+
+/* String list = userInput.nextLine(); //asks for the ingredients of the sandwich
+String ingredients[] = list.split(" "); //removes all spaces
+String ingredientsList = "";
+for (String ingredient : ingredients){ //adds all of the ingredients into a string
+	ingredientsList = ingredientsList + ingredient;
+}
+String filteredIngredients[] = list.split("bread"); //filters out bread from the ingredients string
+if (list.indexOf("bread") == 0 && (list.lastIndexOf("bread") + 5) == list.length()){
+	if (filteredIngredients.length > 0){
+		for (String part : filteredIngredients){ //prints all of the ingredients inside the outer pieces of bread
+			System.out.print(part); */
+
+/*		
+		String[] afterBread = str.split(keyWord);
+		String filling = null;
+		for (int i = 0; i < afterBread.length; i++)
+			filling = afterBread[i]; 
+			System.out.println(filling);
+	}
+
+	}
+
+} */

@@ -22,7 +22,7 @@ public class Split {
 			}
 			String[] afterInnerBread = listOfIngredients.split("bread"); //removes bread from the list of ingredients
 			int numbOfBread = 1; //numbOfBread is used to number the slices of bread (helps to describe the sandwich more clearly)
-			for (String filling : afterInnerBread) { //prints all the ingredients that are within the same slices of bread (and indicates those specific slices of bread)
+			for (String filling : afterInnerBread) { //prints all the ingredients that are within the same slices of bread
 				System.out.println("The ingredient(s) between bread slices " + numbOfBread + " and " + (numbOfBread +1) + " are " + filling);
 				numbOfBread++;
 			}

@@ -1,0 +1,69 @@
+/* Author: Parsa Iranmahboub
+ * Date: 10/28/16
+ * The purpose of this code is to determine whether the user inputed a proper sandwich, and if so, to return the f
+ */
+import java.util.*;
+public class Split 
+{
+
+	public static void main(String[] args) 
+	{
+		//String.split();
+		//It's a method that acts on a string, <StringName>.split(<String sp>);
+		//Where sp is the string where the string splits
+		//And it returns an array
+		// Example: "I like apples!".split(" "); 
+		//		it will split at spaces and return an array of ["I","like","apples!"]
+		// Example 2: "I really like really red apples"split("really")
+		//		it will split at the word "really" and return an array of ["I "," like "," apples!"]
+		
+		//play around with String.split! what happens if you "I reallyreally like apples".split("really") ?
+		
+		
+		//Your task:
+		/*Write a method that take in a string like "applespineapplesbreadlettustomatobaconmayohambreadcheese" describing a sandwich
+		 * use String.split to split up the sandwich by the word "bread" and return what's in the middle of the sandwich and ignores what's on the outside
+		 * What if it's a fancy sandwich with multiple pieces of bread?
+		*/
+		
+		
+		//Your task pt 2:
+		/*Write a method that take in a string like "apples pineapples bread lettus tomato bacon mayo ham bread cheese" describing a sandwich
+		 * use String.split to split up the sandwich at the spaces, " ", and return what's in the middle of the sandwich and ignores what's on the outside
+		 * Again, what if it's a fancy sandwich with multiple pieces of bread?
+		*/
+
+		//System.out.println(Arrays.toString("I really like really red apples".split("really")));
+		
+		sandwich("breadlettustomatobreadbaconmayohambread", "bread");
+
+	}
+	public static void sandwich(String str, String keyWord) {
+		//System.out.println(Arrays.toString(str.split(keyWord)));
+		if (str.toLowerCase().indexOf("bread") == -1) {
+			System.out.println("You need bread to make a sandwich");
+		} 
+		if (str.toLowerCase().indexOf("bread", str.length()-8) != str.length() - 5 || str.toLowerCase().indexOf("bread", 0) != 0) {
+			System.out.println("In order to have a complete sandwich, you need to have a piece of bread at both ends of the sandwich.");
+		} else {
+			String afterOuterBreads = str.substring(5, str.length() - 5);
+			String[] afterInnerBread = afterOuterBreads.split(keyWord);
+			for (String filling : afterInnerBread) {
+				int i = 1;
+				System.out.println("The ingredients between slices " i + " and " + (i +1) + " of the bread are " + filling);
+			}
+		}
+	}
+}
+		
+/*		
+		String[] afterBread = str.split(keyWord);
+		String filling = null;
+		for (int i = 0; i < afterBread.length; i++)
+			filling = afterBread[i]; 
+			System.out.println(filling);
+	}
+
+	}
+
+} */
