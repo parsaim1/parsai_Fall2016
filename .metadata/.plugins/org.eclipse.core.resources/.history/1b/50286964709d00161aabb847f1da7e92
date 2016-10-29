@@ -4,7 +4,7 @@
  */
 public class Split {
 	public static void main(String[] args) {					
-		sandwich("breadbread"); //calls the method that actually finds the ingredients in the sandwich
+		sandwich("bread lettus bread tomato bread bacon mayo ham bread"); //calls the method that actually finds the ingredients in the sandwich
 	}
 	
 	public static void sandwich(String str) {
