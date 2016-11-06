@@ -1,0 +1,75 @@
+/* Author: Parsa Iranmahboub
+ * Date: 11/6/16
+ * The goal of this code is to to manipulate the arrays in the following way: 
+ * 	1. adding the elements of two arrays, 
+ * 	2. appending an integer to the end of the array, 
+ * 	3. removing an element at a certain index of the array, 
+ * 	4. finding the sum of the elements at the even indices of the array, 
+ * 	5. moving the elements of the array one index to the right
+ */
+
+import java.util.Arrays;  //needed for Arrays.toString
+
+public class ArraysLab3 {
+	public static void main(String[] args) {
+		int[] a1 = {5, 10, 15, 20, 25, 30, 35, 40};  //both constructs and declares the array
+		int[] a2 = {7, 14, 21, 28, 35, 42, 49, 56};
+		int[] sumArr = sum(a1, a2);
+		int appendNum = 200;
+		int[] appendArr = append(a1, appendNum);
+		int removeIdx = 5;
+		int[] removeArr = remove(a2, removeIdx);
+		int sumOfEvens = sumEven(appendArr);
+		rotateRight(a1);
+		System.out.println(Arrays.toString(sumArr)); //Arrays.toString is needed so that the actual contents inside the array are printed and not random characters
+		System.out.println(Arrays.toString(appendArr));
+		System.out.println(Arrays.toString(removeArr));
+		System.out.println(sumOfEvens);
+		System.out.println(Arrays.toString(a1));
+		
+	}
+	
+	public static int[] sum(int[] arr1, int[] arr2) {
+		int[] newArr = new int[arr1.length];
+		for (int indexNum = 0; indexNum < arr1.length; indexNum++) {
+			int total = arr1[indexNum] + arr2[indexNum];
+			newArr[indexNum] = total; 
+		}
+		return newArr;
+	}
+	
+	public static int[] append(int[] arr, int num) {
+		int[] newArr = Arrays.copyOf(arr, arr.length + 1);
+		newArr[newArr.length - 1] = num;
+		return newArr;	
+	}
+	
+	public static int[] remove(int [] arr, int idx) {
+		int[] newArr = new int[arr.length - 1];
+		for (int indexNum = 0; indexNum < idx; indexNum++)
+			newArr[indexNum] = arr[indexNum];
+		for (int indexNum = idx; indexNum <= newArr.length - 1; indexNum++) {
+			newArr[indexNum] = arr[indexNum +1];
+		}
+		return newArr;
+	}
+			
+	public static int sumEven(int[] arr) {
+		int total = 0;
+		for (int indexNum = 0; indexNum < arr.length; indexNum++) {
+			if (indexNum % 2 == 0) {
+				total = total + arr[indexNum];
+			}
+		}
+		return total;
+	}
+	
+	public static void rotateRight(int[] arr) {
+		int last = arr[arr.length-1];
+		for (int indexNum = arr.length-1; indexNum > 0; indexNum--) {
+			arr[indexNum] = arr[indexNum - 1];
+		}
+		arr[0] = last;
+	}
+
+}

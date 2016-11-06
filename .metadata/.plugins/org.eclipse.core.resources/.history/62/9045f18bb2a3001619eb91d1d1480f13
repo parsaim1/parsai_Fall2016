@@ -1,0 +1,44 @@
+import java.util.Arrays;
+
+public class ArraysLab3 {
+	public static void main(String[] args) {
+		int[] arr1 = {-3, 4, 55, 21, 0, 2};
+		int[] arr2 = {2, -5, 3, 0, 0, -44};
+		System.out.println(Arrays.toString(sum(arr1, arr2)));
+		System.out.println(Arrays.toString(remove(arr1, 4)));
+	}
+	
+	public static int[] sum(int[] arr1, int[] arr2) {
+		int[] newArr = new int[arr1.length];
+		for (int i = 0; i < arr1.length; i++) {
+			int total = arr1[i] + arr2[i];
+			newArr[i] = total; 
+		}
+		return newArr;
+	}
+	
+	public static int[] append(int[] arr, int num) {
+		int[] newArr = Arrays.copyOf(arr, arr.length + 1);
+		newArr[newArr.length - 1] = num;
+		return newArr;	
+	}
+	
+	public static int[] remove(int [] arr, int idx) {
+		int[] newArr = new int[arr.length - 1];
+		for (int j = 0; j < idx; j++)
+			newArr[j] = arr[j];
+		//newArr = Arrays.copyOfRange(arr, 0, idx);
+		for (int i = idx; i <= newArr.length - 1; i++) {
+			newArr[i] = arr[i +1];
+		}
+		return newArr;
+	}
+			
+		
+		
+		
+		//Int[] newArr = new int[length-1] Arrays.copyOfRange(arr, 0, int) 
+		//for (i = idx; i < length-1; i++) { i =i +1
+
+
+}
