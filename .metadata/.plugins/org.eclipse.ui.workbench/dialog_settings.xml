@@ -34,6 +34,7 @@
 		<item value="false" key="WizardFileSystemResourceImportPage1.STORE_OVERWRITE_EXISTING_RESOURCES_ID"/>
 		<list key="WizardFileSystemResourceImportPage1.STORE_SOURCE_NAMES_ID">
 			<item value="/Users/Parsa/Desktop/FracCalc-2"/>
+			<item value="/Users/Parsa/Downloads/FracCalc"/>
 			<item value="/Users/Parsa/Desktop/FracCalc"/>
 			<item value="/Users/Parsa/Desktop/FracCalc/src/fracCalc"/>
 			<item value="/Users/Parsa/Desktop"/>

@@ -1,0 +1,69 @@
+package fracCalc;
+import java.util.*;
+public class FracCalc {
+
+
+    public static void main(String[] args) {
+        // TODO: Read the input from the user and call produceAnswer with an equation
+    	Scanner console = new Scanner(System.in);
+    	String input = console.nextLine();
+    	produceAnswer(input);
+    	int wholeNum = cleanOperand[0];
+    	int num = cleanOperand[1];
+    	int den = cleanOperand[2];
+    	System.out.println(“whole:” + wholeNum + “ numerator:” + num + “ denominator:” + den);
+    	}
+    
+    // ** IMPORTANT ** DO NOT DELETE THIS FUNCTION.  This function will be used to test your code
+    // This function takes a String 'input' and produces the result
+    //
+    // input is a fraction string that needs to be evaluated.  For your program, this will be the user input.
+    //      e.g. input ==> "1/2 + 3/4"
+    //        
+    // The function should return the result of the fraction after it has been calculated
+    //      e.g. return ==> "1_1/4"
+    
+     public static int[] produceAnswer(String input) { 
+        // TODO: Implement this function to produce the solution to the input
+    	String firstOperand = "";
+    	String secondOperand = "";
+        if (input.indexOf("+") != -1) {
+        	String operator = "+";
+        	String[] afterOperator = input.split(" ");
+        	firstOperand = afterOperator[0];
+        	secondOperand = afterOperator[2];
+        	return parseOperand(secondOperand); 
+        } else if (input.indexOf("-") != -1) {
+        	String operator = "-";
+        	String[] afterOperator = input.split(" ");
+        	firstOperand = afterOperator[0];
+        	secondOperand = afterOperator[2];
+        	return parseOperand(secondOperand);
+        } else if (input.indexOf("*") != -1) {
+        	String operator = "*";
+        	String[] afterOperator = input.split(" ");
+        	firstOperand = afterOperator[0];
+        	secondOperand = afterOperator[2];
+        	return parseOperand(secondOperand);
+        } else {
+        	String operator = "/";
+        	String[] afterOperator = input.split(" ");
+        	firstOperand = afterOperator[0];
+        	secondOperand = afterOperator[2];
+        	return parseOperand(secondOperand);
+        }
+    }
+
+
+   public static int[] parseOperand(String secondOperand) {
+	String[] getRidOfUnderscore = secondOperand.split(“_”);
+	int[] cleanOperand = new int[3];
+	cleanOperand[0] = getRidOfUnderscore.parseInt;
+	String fraction = getRidOfUnderscore[1];
+	String[] getRidOfDash = fraction.split(“/”);
+	cleanOperand[1] = getRidOfDash.nextInt();
+	cleanOperand[2] = getRidOfDash.nextInt();
+	return cleanOperand;
+   }
+
+}
