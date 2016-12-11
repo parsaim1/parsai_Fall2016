@@ -1,0 +1,156 @@
+package fracCalc;
+import java.util.*;
+public class FracCalc {
+
+
+    public static void main(String[] args) {
+        // TODO: Read the input from the user and call produceAnswer with an equation
+    	Scanner console = new Scanner(System.in);
+    	System.out.println("Please enter an equation");
+    	String input = console.nextLine();
+    	while (!input.equals("quit")) {
+    			System.out.println(produceAnswer(input));
+    			System.out.println("Please enter an equation");
+    			input = console.nextLine();
+    	}
+    	System.out.println("Thank you");
+    }
+    
+    // ** IMPORTANT ** DO NOT DELETE THIS FUNCTION.  This function will be used to test your code
+    // This function takes a String 'input' and produces the result
+    //
+    // input is a fraction string that needs to be evaluated.  For your program, this will be the user input.
+    //      e.g. input ==> "1/2 + 3/4"
+    //        
+    // The function should return the result of the fraction after it has been calculated
+    //      e.g. return ==> "1_1/4"
+    
+    public static String produceAnswer(String input) { 
+        // TODO: Implement this function to produce the solution to the input
+    	String[] afterSplittingSpace = parseString(input);
+    	String firstOperand = afterSplittingSpace[0];
+    	String operator = afterSplittingSpace[1];
+    	String secondOperand = afterSplittingSpace[2];
+    	int[] improperFracOperand1 = parseOperand(firstOperand);
+    	int[] improperFracOperand2 = parseOperand(secondOperand);
+    	int[] unsimplifiedAnswer;
+    	if (operator.equals("+") || operator.equals("-")) {
+    		improperFracOperand1[0] = improperFracOperand1[0] * improperFracOperand2[1];
+    		improperFracOperand2[0] = improperFracOperand2[0] * improperFracOperand1[1];
+    		improperFracOperand1[1] = improperFracOperand1[1] * improperFracOperand2[1];
+    		improperFracOperand2[1] = improperFracOperand1[1];
+    		if (operator.equals("+")) {
+    			unsimplifiedAnswer = addOperands(improperFracOperand1, improperFracOperand2);
+    		} else {
+    			unsimplifiedAnswer = subtractOperands(improperFracOperand1, improperFracOperand2);
+    		}
+    	} else if (operator.equals("*")) {
+    		unsimplifiedAnswer = multiplyOperands(improperFracOperand1, improperFracOperand2);
+    	} else {
+    		unsimplifiedAnswer = divideOperands(improperFracOperand1, improperFracOperand2);	
+    	}
+    	int[] simplified = simplifyAnswer(unsimplifiedAnswer);
+    	int wholeNum = simplified[0];
+		int num = simplified[1];
+		int den = simplified[2];
+		String finalAnswer;
+		if (wholeNum == 0) {
+			finalAnswer = num + "/" + den;
+		} else if (num == 0) {
+			finalAnswer = wholeNum + "";
+		} else if (den == 1) {
+			finalAnswer = num + "";			
+		} else {
+			finalAnswer = wholeNum + "_" + num + "/" + den;
+		}
+		return finalAnswer;
+	}
+
+     	
+   public static String[] parseString(String input) {
+    	String[] splitSpaces = input.split(" ");
+    	return splitSpaces;
+   }
+   
+   public static int[] parseOperand(String input) {
+	   int[] operandComponents = new int[3];   //component 1 is whole number, component 2 is numerator, component 3 is denominator
+	   if (input.indexOf("_") == -1 && input.indexOf("/") == -1) {
+		   operandComponents[0] = Integer.parseInt(input); 
+		   operandComponents[1] = 0;
+		   operandComponents[2] = 1;
+	   } else if (input.indexOf("_") == -1 && input.indexOf("/") > -1) {
+		   operandComponents[0] = 0;
+		   String[] splitDash = input.split("/");
+		   operandComponents[1] = Integer.parseInt(splitDash[0]);
+		   operandComponents[2] = Integer.parseInt(splitDash[1]);
+	   } else {
+		   String[] splitUnderscore = input.split("_");
+		   operandComponents[0] = Integer.parseInt(splitUnderscore[0]);
+		   String fractionComponent = splitUnderscore[1];
+		   String[] splitDash = fractionComponent.split("/");
+		   operandComponents[1] = Integer.parseInt(splitDash[0]);
+		   operandComponents[2] = Integer.parseInt(splitDash[1]);
+	   }
+	   return toImproperFrac(operandComponents);
+   }
+	 
+   public static int[] toImproperFrac(int[] input) {
+	   int[] improperFraction = new int[2];
+	   if (input[0] < 0) {
+		   improperFraction[0] = -(Math.abs(input[0]) * input[2] + input[1]);
+	   } else {
+		   improperFraction[0] = input[0] * input[2] + input[1];
+	   }
+	   improperFraction[1] = input[2];
+	   return improperFraction;
+   }
+   
+   public static int[] addOperands(int[] operand1, int[] operand2) {
+	   operand1[0] = operand1[0] + operand2[0];
+	   return operand1;
+   }
+   
+   public static int[] subtractOperands(int[] operand1, int[] operand2) {
+	   operand1[0] = operand1[0] - operand2[0];
+	   return operand1;
+   }
+   
+   public static int[] multiplyOperands(int[] operand1, int[] operand2) {
+	   operand1[0] = operand1[0] * operand2[0];
+	   operand1[1] = operand1[1] * operand2[1];
+	   return operand1;
+   }
+   
+   public static int[] divideOperands(int[] operand1, int[] operand2) {
+	   operand1[0] = operand1[0] * operand2[1];
+	   operand1[1] = operand1[1] * operand2[0];
+	   return operand1;
+   }
+   
+   public static int[] simplifyAnswer(int[] unsimplifiedAnswer) {
+	   int[] finalAnswer = new int[3];
+	   int num = unsimplifiedAnswer[0];
+	   int den = unsimplifiedAnswer[1];
+	   int gcf = findGCF(num, den);
+	   num = num / gcf;
+	   den = den / gcf; 
+	   finalAnswer[0] = 0;   //in case the numerator is less than the denominator
+	   finalAnswer[1] = num;
+	   finalAnswer[2] = den;
+	   if (Math.abs(num) > den) {    //need to deal with negatives
+		   finalAnswer[0] = num / den;
+		   finalAnswer[1] = Math.abs(num) % den;
+	   }
+	   return finalAnswer;
+   }
+   
+   public static int findGCF(int num, int den) {
+	   int testNumber = 0;
+	   while (num != 0 && den != 0) {
+		   testNumber = den;
+		   den = num % den;
+		   num = testNumber;
+	   }
+	   return Math.abs(testNumber);   //make sure the gcf is not a negative
+   }
+}
